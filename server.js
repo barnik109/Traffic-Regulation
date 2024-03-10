@@ -63,12 +63,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
 const port = 3001;
 
 // Connect to MongoDB (replace 'your-mongodb-uri' with your MongoDB connection string)
-mongoose.connect('mongodb+srv://barnik_123:Barnik*1108@cluster0.5jym1l3.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Create a schema for violations
 const violationSchema = new mongoose.Schema({
