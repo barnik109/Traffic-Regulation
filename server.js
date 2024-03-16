@@ -8,41 +8,49 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001; // Use the provided PORT from environment or default to 3001
 
-// Connect to MongoDB (replace 'your-mongodb-uri' with your MongoDB connection string)
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('Error connecting to MongoDB:', err));
 
 // Create a schema for violations
 const violationSchema = new mongoose.Schema({
-    drivingLicenseNumber: String,
-    violationDate: String,
-    violationType: String,
-    demeritPoints: Number, // Add demeritPoints to the schema
+    drivingLicenseNumber: { type: String, required: true },
+    violationDate: { type: Date, default: Date.now },
+    violationType: { type: String, required: true },
+    demeritPoints: { type: Number, required: true },
 });
-
 
 // Create a schema for users
 const userSchema = new mongoose.Schema({
-    username: String,
-    email: String,
-    password: String
+    username: { type: String, required: true },
+    email: { type: String, required: true },
+    password: { type: String, required: true },
+    fullName: { type: String, required: true },
+    dateOfBirth: { type: Date, required: true },
+    address: { type: String, required: true },
+    licenseNumber: { type: String, required: true },
+    vehiclePlateNumber: { type: String },
+    vehicleMake: { type: String },
+    vehicleModel: { type: String },
+    vehicleYear: { type: String },
+    phoneNumber: { type: String, required: true },
+    alternateEmail: { type: String },
+    termsAgreement: { type: Boolean, default: false }
 });
-
-// Create a model based on the schema
-const UserModel = mongoose.model('User', userSchema);
-
-// Create a model based on the schema
-const ViolationModel = mongoose.model('Violation', violationSchema);
 
 // Create a schema for traffic officers
 const officerSchema = new mongoose.Schema({
-    badgeNumber: String,
-    department: String,
-    password: String
+    badgeNumber: { type: String, required: true },
+    department: { type: String, required: true },
+    password: { type: String, required: true }
 });
 
-// Create a model based on the schema
+// Create models based on the schemas
+const UserModel = mongoose.model('User', userSchema);
+const ViolationModel = mongoose.model('Violation', violationSchema);
 const OfficerModel = mongoose.model('Officer', officerSchema);
 
 app.use(cors());
@@ -90,12 +98,17 @@ app.get('/check-violations/:licenseNumber', async (req, res) => {
     }
 });
 
-
 // Endpoint for user registration
 app.post('/register/user', async (req, res) => {
     const userData = req.body;
 
     try {
+        // Check if the email already exists
+        const existingUser = await UserModel.findOne({ email: userData.email });
+        if (existingUser) {
+            return res.status(400).json({ success: false, message: 'Email already exists' });
+        }
+
         // Insert user details into the database
         const result = await UserModel.create(userData);
 
@@ -111,6 +124,12 @@ app.post('/register/officer', async (req, res) => {
     const officerData = req.body;
 
     try {
+        // Check if the badge number already exists
+        const existingOfficer = await OfficerModel.findOne({ badgeNumber: officerData.badgeNumber });
+        if (existingOfficer) {
+            return res.status(400).json({ success: false, message: 'Badge number already exists' });
+        }
+
         // Insert officer details into the database
         const result = await OfficerModel.create(officerData);
 

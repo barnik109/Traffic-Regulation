@@ -1,15 +1,18 @@
 
 
-// import { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 // import { ethers } from 'ethers';
 // import abi from './contractJson/TrafficSystem.json';
 // import TrafficOfficer from './components/TrafficOfficer';
 // import PublicCheck from './components/PublicCheck';
-// import OfficerLogin from './Login/officerLogin'; // Import Traffic Officer Login component
-// import UserLogin from './Login/UserLogin'; // Import User Login component
-// import './App.css';
+// import UserRegistration from './Registration/UserRegistration';
+// import OfficerRegistration from './Registration/OfficerRegistration';
+// import UserLogin from './Login/UserLogin';
+// import OfficerLogin from './Login/officerLogin';
+// import 'tailwindcss/tailwind.css';
 // import bgVid from './assets/signal.mp4';
 // import bgAudio from './assets/Traffic_Home_Audio.mp3';
+// import './App.css'
 
 // function App() {
 //   const [state, setState] = useState({
@@ -18,7 +21,7 @@
 //     contract: null
 //   });
 
-//   const [account, setAccount] = useState('Not connected');
+//   const [account, setAccount] = useState(null);
 //   const [userType, setUserType] = useState(null);
 
 //   useEffect(() => {
@@ -72,27 +75,71 @@
 //         <div className='backGround flex justify-center items-center'>
 //           <video src={bgVid} autoPlay loop muted />
 //           <audio src={bgAudio} autoPlay />
+//           <div className='content text-white shadow-lg  flex h-screen w-screen flex-col justify-center'>
+//             <div className='w-[30rem] relative left-[20rem]'>
+//               <h2 className="text-5xl font-bold my-8">The first Blockchain Based Trafic Regulation System in India</h2>
+//               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo suscipit hic amet eveniet, nostrum corrupti voluptatem exercitationem mollitia rerum expedita a quae quibusdam repellendus voluptas totam architecto! Quo, id sit?</p>
+//               <div className='my-5'>
+//                 <button onClick={() => handleUserTypeSelection('register')} className="border px-5 py-1">Register</button>
+//                 <button onClick={() => handleUserTypeSelection('login')} className="border px-5 py-1">Login</button>
+//               </div>
+
+//             </div>
+
+//           </div>
+//         </div>
+//       );
+//     }
+
+//     if (userType === 'register') {
+//       return (
+//         <div className='backGround flex justify-center items-center'>
+//           <video src={bgVid} autoPlay loop muted />
+//           <audio src={bgAudio} autoPlay />
 //           <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
-//             <h2 className="text-3xl my-10">Welcome to Blockchain Based Traffic Regulation System</h2>
+//             <h2 className="text-3xl my-10">Register</h2>
 //             <div className='flex justify-around my-10'>
-//               <button onClick={() => handleUserTypeSelection('user')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">User Login</button>
-//               <button onClick={() => handleUserTypeSelection('officer')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Traffic Officer Login</button>
+//               <button onClick={() => handleUserTypeSelection('registerUser')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Register as User</button>
+//               <button onClick={() => handleUserTypeSelection('registerOfficer')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Register as Traffic Officer</button>
 //             </div>
 //           </div>
 //         </div>
 //       );
 //     }
 
-//     // if (userType === 'user') {
-//     //   return <UserLogin handleUserLogin={() => handleUserTypeSelection(null)} />;
-//     // }
+//     if (userType === 'login') {
+//       return (
+//         <div className='backGround flex justify-center items-center'>
+//           <video src={bgVid} autoPlay loop muted />
+//           <audio src={bgAudio} autoPlay />
+//           <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
+//             <h2 className="text-3xl my-10">Login</h2>
+//             <div className='flex justify-around my-10'>
+//               <button onClick={() => handleUserTypeSelection('user')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Login as User</button>
+//               <button onClick={() => handleUserTypeSelection('officer')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Login as Traffic Officer</button>
+//             </div>
+//           </div>
+//         </div>
+//       );
+//     }
 
-//     // if (userType === 'officer') {
-//     //   return <OfficerLogin handleOfficerLogin={() => handleUserTypeSelection(null)} />;
-//     // }
+//     if (userType === 'registerUser') {
+//       return <UserRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />;
+//     }
 
-//     // Render dashboard components based on userType
+//     if (userType === 'registerOfficer') {
+//       return <OfficerRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />;
+//     }
+
 //     if (userType === 'user') {
+//       return <UserLogin handleUserLogin={() => handleUserTypeSelection(null)} />;
+//     }
+
+//     if (userType === 'officer') {
+//       return <OfficerLogin handleOfficerLogin={() => handleUserTypeSelection(null)} />;
+//     }
+
+//     if (userType === 'public') {
 //       return <PublicCheck contract={state.contract} />;
 //     }
 
@@ -101,23 +148,46 @@
 //     }
 //   };
 
-//   return <div className="App">{renderContent()}</div>;
+//   return (
+//     <div className="text-white min-h-screen flex flex-col">
+//       <header className="flex justify-between items-center p-5">
+//         <h1 className="text-3xl font-bold">BBTRS</h1>
+//         <nav>
+//           <ul className="flex space-x-4">
+//             <li className="hover:underline cursor-pointer">HOME</li>
+//             <li className="hover:underline cursor-pointer">ABOUT</li>
+//             <li className="hover:underline cursor-pointer">PRICING</li>
+//             <li className="hover:underline cursor-pointer">CONTACT</li>
+//           </ul>
+//         </nav>
+//       </header>
+//       <main className="flex-grow container mx-auto px-4">
+//         {renderContent()}
+//       </main>
+//       <footer className="p-5">
+//         {/* Footer content goes here */}
+//       </footer>
+//     </div>
+//   );
 // }
 
 // export default App;
 
-import { useState, useEffect } from 'react';
+
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ethers } from 'ethers';
 import abi from './contractJson/TrafficSystem.json';
 import TrafficOfficer from './components/TrafficOfficer';
 import PublicCheck from './components/PublicCheck';
-import UserRegistration from './Registration/UserRegistration'; // Import User Registration component
-import OfficerRegistration from './Registration/OfficerRegistration'; // Import Officer Registration component
-import UserLogin from './Login/UserLogin'; // Import User Login component
-import OfficerLogin from './Login/officerLogin'; // Import Traffic Officer Login component
-import './App.css';
+import UserRegistration from './Registration/UserRegistration';
+import OfficerRegistration from './Registration/OfficerRegistration';
+import UserLogin from './Login/UserLogin';
+import OfficerLogin from './Login/officerLogin';
+import 'tailwindcss/tailwind.css';
 import bgVid from './assets/signal.mp4';
 import bgAudio from './assets/Traffic_Home_Audio.mp3';
+import './App.css';
 
 function App() {
   const [state, setState] = useState({
@@ -126,7 +196,7 @@ function App() {
     contract: null
   });
 
-  const [account, setAccount] = useState('Not connected');
+  const [account, setAccount] = useState(null);
   const [userType, setUserType] = useState(null);
 
   useEffect(() => {
@@ -175,87 +245,98 @@ function App() {
       );
     }
 
-    if (!userType) {
-      return (
-        <div className='backGround flex justify-center items-center'>
-          <video src={bgVid} autoPlay loop muted />
-          <audio src={bgAudio} autoPlay />
-          <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
-            <h2 className="text-3xl my-10">Welcome to Blockchain Based Traffic Regulation System</h2>
-            <div className='flex justify-around my-10'>
-              <button onClick={() => handleUserTypeSelection('register')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Register</button>
-              <button onClick={() => handleUserTypeSelection('login')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Login</button>
+    return (
+        <Routes>
+        <Route exact path="/" element={
+          <div className='backGround flex justify-center items-center'>
+            <video src={bgVid} autoPlay loop muted />
+            <audio src={bgAudio} autoPlay />
+            <div className='content text-white shadow-lg  flex h-screen w-screen flex-col justify-center'>
+              <div className='w-[30rem] relative left-[20rem]'>
+                <h2 className="text-5xl font-bold my-8">The first Blockchain Based Trafic Regulation System in India</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo suscipit hic amet eveniet, nostrum corrupti voluptatem exercitationem mollitia rerum expedita a quae quibusdam repellendus voluptas totam architecto! Quo, id sit?</p>
+                <div className='my-5'>
+                  <button onClick={() => handleUserTypeSelection('register')} className="border px-5 py-1">Register</button>
+                  <button onClick={() => handleUserTypeSelection('login')} className="border px-5 py-1">Login</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      );
-    }
+        }>
+          
+        </Route>
 
-    // Display registration options after clicking the "Register" button
-    if (userType === 'register') {
-      return (
-        <div className='backGround flex justify-center items-center'>
-          <video src={bgVid} autoPlay loop muted />
-          <audio src={bgAudio} autoPlay />
-          <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
-            <h2 className="text-3xl my-10">Register</h2>
-            <div className='flex justify-around my-10'>
-              <button onClick={() => handleUserTypeSelection('registerUser')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Register as User</button>
-              <button onClick={() => handleUserTypeSelection('registerOfficer')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Register as Traffic Officer</button>
+        
+          <Route path="/register" element={
+            <div className='backGround flex justify-center items-center'>
+              <video src={bgVid} autoPlay loop muted />
+              <audio src={bgAudio} autoPlay />
+              <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
+                <h2 className="text-3xl my-10">Register</h2>
+                <div className='flex justify-around my-10'>
+                  <button onClick={() => handleUserTypeSelection('registerUser')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Register as User</button>
+                  <button onClick={() => handleUserTypeSelection('registerOfficer')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Register as Traffic Officer</button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      );
-    }
+          }>
+          </Route>
+        
+          <Route path="/login" element={
+            <div className='backGround flex justify-center items-center'>
+                     <video src={bgVid} autoPlay loop muted />
+                      <audio src={bgAudio} autoPlay />
+                     <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
+                       <h2 className="text-3xl my-10">Login</h2>
+                       <div className='flex justify-around my-10'>
+                         </div>
+                     </div>
+                   </div>
+          }>
+          
+        </Route>
+        
+        if (userType === 'registerUser') {
+          <Route path='/UserReg' element={
+            <UserRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />
+          }></Route>
+        }
 
-    // Display login options after clicking the "Login" button
-    if (userType === 'login') {
-      return (
-        <div className='backGround flex justify-center items-center'>
-          <video src={bgVid} autoPlay loop muted />
-          <audio src={bgAudio} autoPlay />
-          <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
-            <h2 className="text-3xl my-10">Login</h2>
-            <div className='flex justify-around my-10'>
-              <button onClick={() => handleUserTypeSelection('user')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Login as User</button>
-              <button onClick={() => handleUserTypeSelection('officer')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Login as Traffic Officer</button>
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    // Render registration components
-    if (userType === 'registerUser') {
-      return <UserRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />;
-    }
-
-    if (userType === 'registerOfficer') {
-      return <OfficerRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />;
-    }
-
-    // Render login components
-    if (userType === 'user') {
-      return <UserLogin handleUserLogin={() => handleUserTypeSelection(null)} />;
-    }
-
-    if (userType === 'officer') {
-      return <OfficerLogin handleOfficerLogin={() => handleUserTypeSelection(null)} />;
-    }
-
-    // Render dashboard components based on userType
-    if (userType === 'public') {
-      return <PublicCheck contract={state.contract} />;
-    }
-
-    if (userType === 'officer') {
-      return <TrafficOfficer contract={state.contract} signer={state.signer} />;
-    }
+        if (userType === 'registerOfficer') {
+          <Route path='/OfficerReg' element={
+            <OfficerRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />
+          }></Route>
+        }
+        </Routes>
+    );
   };
 
-  return <div className="App">{renderContent()}</div>;
+  return (
+    <Router>
+      <div className="text-white min-h-screen flex flex-col">
+        <header className="flex justify-between items-center p-5">
+          <h1 className="text-3xl font-bold">BBTRS</h1>
+          <nav>
+            <ul className="flex space-x-4">
+              <li className="hover:underline cursor-pointer">HOME</li>
+              <li className="hover:underline cursor-pointer">ABOUT</li>
+              <li className="hover:underline cursor-pointer">PRICING</li>
+              <li className="hover:underline cursor-pointer">CONTACT</li>
+            </ul>
+          </nav>
+        </header>
+        <main className="flex-grow container mx-auto px-4">
+          {renderContent()}
+        </main>
+        <footer className="p-5">
+          {/* Footer content goes here */}
+        </footer>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
+
 
 

@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    overflow: hidden;
+    /* This might cause some content to be hidden, be cautious */
+}
+
+.main {
+    position: relative;
+    /* Add position relative to establish a new containing block for absolute positioning */
+    width: 100%;
+    height: 100vh;
+}
+
+video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    /* Position the video at the top */
+    left: 0;
+    /* Position the video at the left */
+    z-index: -1;
+    /* Move the video behind other content */
+}
+
+.content {
+    background: linear-gradient(90deg, rgba(0, 22, 203, 0.9) 0%, rgba(249, 0, 248, 0.5) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* Adjust z-index to ensure content is above the video */
+}
