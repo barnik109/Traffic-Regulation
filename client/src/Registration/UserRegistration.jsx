@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import bgVid from '../assets/signal.mp4';
 
 const UserRegistration = ({ handleRegistrationSuccess }) => {
     const [formData, setFormData] = useState({
@@ -45,9 +46,14 @@ const UserRegistration = ({ handleRegistrationSuccess }) => {
     };
 
     return (
-        <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md overflow-y-auto" style={{ maxHeight: '80vh' }}>
-            <h2 className="text-2xl font-semibold mb-4 text-black">User Registration</h2>
-            {error && <p className="text-red-500 mb-4">{error}</p>}
+        <div className="content">
+            <div className="backGround overflow-y-auto py-6 flex flex-col h-screen items-center sm:py-12">
+                <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+                    <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+                        <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
+                            <h2 className="text-2xl font-semibold mb-4 text-black">User Registration</h2>
+                            {error && <p className="text-red-500 mb-4">{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username:</label>
@@ -107,6 +113,10 @@ const UserRegistration = ({ handleRegistrationSuccess }) => {
                 </div>
                 <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Register</button>
             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
