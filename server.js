@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const sepolia = require('sepolia');
 
 dotenv.config();
 
@@ -75,6 +76,7 @@ app.post('/submit-violation', authenticateOfficer, async (req, res) => {
     try {
         // Insert violation details into the database
         const result = await ViolationModel.create(violationDetails);
+        await sepolia.storeReference('violations', violation._id.toString());
 
         res.json({ success: true, message: 'Violation details submitted successfully', result });
     } catch (error) {
@@ -82,6 +84,28 @@ app.post('/submit-violation', authenticateOfficer, async (req, res) => {
         res.status(500).json({ success: false, message: 'Failed to submit violation details' });
     }
 });
+
+// Endpoint for user login
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        // Find the user with the provided username
+        const user = await UserModel.findOne({ username });
+
+        // Check if the user exists and the password matches
+        if (!user || user.password !== password) {
+            return res.status(401).json({ success: false, message: 'Invalid username or password' });
+        }
+
+        // If the username and password are correct, return a success message
+        res.json({ success: true, message: 'Login successful' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'An error occurred while logging in' });
+    }
+});
+
 
 // Endpoint to check violations (accessible to users)
 app.get('/check-violations/:licenseNumber', async (req, res) => {

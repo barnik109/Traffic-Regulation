@@ -258,6 +258,14 @@ function App() {
     window.location.href = '/OfficerReg';
   }
 
+  const loginOfficer = () => {
+    window.location.href = '/OfficerLogin';
+  }
+
+  const loginUser = () => {
+    window.location.href = '/UserLogin';
+  }
+
 
 
   return (
@@ -311,13 +319,11 @@ function App() {
 
             <Route path="/login" element={
               <div className='backGround flex justify-center items-center'>
-                <video src={bgVid} autoPlay loop muted />
-                <audio src={bgAudio} autoPlay />
                 <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
                   <h2 className="text-3xl my-10">Login</h2>
                   <div className='flex justify-around my-10'>
-                    <button onClick={() => handleUserTypeSelection('user')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Login as User</button>
-                    <button onClick={() => handleUserTypeSelection('officer')} className="bg-blue-700 text-white rounded-lg mx-10 px-5 py-3 hover:bg-blue-500">Login as Traffic Officer</button>
+                    <button onClick={() => loginOfficer()} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as Officer</button>
+                    <button onClick={() => loginUser()} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as User</button>
                   </div>
                 </div>
               </div>
@@ -325,6 +331,11 @@ function App() {
 
             <Route path='/UserReg' element={<UserRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />} />
             <Route path='/OfficerReg' element={<OfficerRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />} />
+
+            <Route path='/UserLogin' element={<UserLogin handleUserLogin={() => handleUserTypeSelection(null)} />} />
+            <Route path='/OfficerLogin' element={<OfficerLogin handleOfficerLogin={() => handleUserTypeSelection(null)} />} />
+
+            <Route path='/userDashboard' element={<PublicCheck contract={state.contract}/>}/>
 
           </Routes>
         </Router>
