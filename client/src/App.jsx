@@ -262,7 +262,7 @@ function App() {
 
 
   return (
-    <div className="text-white min-h-screen flex flex-col">
+    <div className="text-white min-h-screen flex flex-col bg-black">
       <header className="flex justify-between items-center p-5 z-10">
         <span className='max-w-full'><img className='w-36' src={logo} alt="" /></span>
         <nav>
@@ -276,24 +276,40 @@ function App() {
         <Router>
           <Routes>
             <Route exact path="/" element={
-              <div className='backGround flex justify-center items-center'>
-                {/* <video src={bgVid} autoPlay loop muted /> */}
-                <audio src={bgAudio} autoPlay />
-                <div className='content text-white shadow-lg  flex h-screen w-screen flex-col justify-center'>
-                  <span className='absolute top-25 right-10'><img src={front} alt="" /></span>
-                  <div className='w-[40rem] p-10 relative left-[15rem] flex flex-col'>
-                    <div className="blob bg-blue-900 absolute flex justify-center items-center"></div>
-                    <div className="bg-black border border-sky-500 bg-opacity-70 backdrop-blur-lg rounded-3xl drop-shadow-lg p-5 flex flex-col justify-center items-center">
-                      <h2 className="text-5xl font-bold my-8">The first Blockchain Based Traffic Regulation System in India</h2>
-                      <p className='text-lg'>we believe in revolutionizing how traffic regulations are implemented and enforced. By leveraging the power of blockchain technology, we aim to create a transparent, efficient, and secure system that brings trust and accountability to traffic management.</p>
+              <>
+                {/* main section */}
+                <section className='h-screen flex justify-center items-center'>
+                  <div className='text-white flex justify-center'>
+                    <div className='w-1/2 mx-10 px-10'>
+                      {/* <div className="blob bg-blue-900 absolute flex justify-center items-center"></div> */}
+                      <div className="bg-black border border-sky-500 bg-opacity-70 backdrop-blur-lg rounded-3xl drop-shadow-lg p-5 flex flex-col justify-center items-center">
+                        <h2 className="text-5xl font-bold my-8">The first Blockchain Based Traffic Regulation System in India</h2>
+                        <p className='text-lg'>we believe in revolutionizing how traffic regulations are implemented and enforced. By leveraging the power of blockchain technology, we aim to create a transparent, efficient, and secure system that brings trust and accountability to traffic management.</p>
+                      </div>
+                      <div className='my-5 reg-btn'>
+                        <button onClick={() => redirectToRegister()} className="border px-5 py-1 mr-3 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Register</button>
+                        <button onClick={() => redirectToLogin()} className="border px-5 py-1 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Login</button>
+                      </div>
                     </div>
-                    <div className='my-5 reg-btn'>
-                      <button onClick={() => redirectToRegister()} className="border px-5 py-1 mr-3 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Register</button>
-                      <button onClick={() => redirectToLogin()} className="border px-5 py-1 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Login</button>
+                    <span className='w-1/2 flex justify-center'><img className='' src={front} alt="" /></span>
+                  </div>
+                </section>
+
+                {/* Second Section */}
+                <section>
+                  <div className="flex flex-col items-center">
+                    <h3 className="text-3xl font-bold ">Traffic Regulations Information</h3>
+                    <div className="text-left m-5 px-20">
+                    <p>
+                      Here you can find essential information about traffic regulations, including speed limits, traffic signs, parking rules, and more.
+                    </p>
+                    <p>
+                      Understanding and following traffic regulations is crucial for safe and efficient transportation. Make sure to stay informed and abide by the rules to contribute to smoother traffic flow and promote road safety.
+                    </p>
                     </div>
                   </div>
-                </div>
-              </div>
+                </section>
+              </>
             } />
 
 
