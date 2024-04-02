@@ -190,6 +190,7 @@ import bgAudio from './assets/Traffic_Home_Audio.mp3';
 import './App.css';
 import logo from './assets/logo.png';
 import front from './assets/front.png';
+import TrafficUpdates from './Traffic Updates/TrafficUpdates';
 
 function App() {
   const [state, setState] = useState({
@@ -299,9 +300,14 @@ function App() {
                       <button onClick={() => redirectToRegister()} className="border px-5 py-1 mr-3 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Register</button>
                       <button onClick={() => redirectToLogin()} className="border px-5 py-1 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Login</button>
                     </div>
+                    
                   </div>
+                  
+                  
                 </div>
+               
               </div>
+              
             } />
 
 

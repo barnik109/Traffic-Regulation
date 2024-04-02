@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const sepolia = require('sepolia');
+
 
 dotenv.config();
 
@@ -76,7 +76,6 @@ app.post('/submit-violation', authenticateOfficer, async (req, res) => {
     try {
         // Insert violation details into the database
         const result = await ViolationModel.create(violationDetails);
-        await sepolia.storeReference('violations', violation._id.toString());
 
         res.json({ success: true, message: 'Violation details submitted successfully', result });
     } catch (error) {
