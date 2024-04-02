@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 body {
-    overflow: hidden;
-    /* This might cause some content to be hidden, be cautious */
+
 }
 
 .main {
@@ -14,30 +13,6 @@ body {
     height: 100vh;
 }
 
-video {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    top: 0;
-    /* Position the video at the top */
-    left: 0;
-    /* Position the video at the left */
-    z-index: -1;
-    /* Move the video behind other content */
-}
-
-.content {
-    /* background: linear-gradient(90deg, rgba(0, 0, 0, 1) 50%, rgb(0, 0, 0, 0.8) 100%); */
-    background-color: black;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    /* Adjust z-index to ensure content is above the video */
-}
 
 button{
     border-radius: 15px;
