@@ -200,7 +200,7 @@ function App() {
         <span className='max-w-full'><img className='w-36' src={logo} alt="" /></span>
         <nav>
           <ul className="flex space-x-4">
-            <li className="hover:underline cursor-pointer" >HOME</li>
+            <li className="hover:underline cursor-pointer">HOME</li>
             <li className="hover:underline cursor-pointer">ABOUT</li>
           </ul>
         </nav>
@@ -227,8 +227,8 @@ function App() {
                   </div>
                 </section>
 
-                {/* Second Section */}
-                <section>
+                {/* Guidline Section */}
+                <section className='h-screen'>
                   <div className="flex flex-col items-center">
                     <h3 className="text-3xl font-bold ">Road Safety Guideline</h3>
                     <div className="text-left m-5 px-20">
@@ -241,7 +241,8 @@ function App() {
                     </div>
 
                   </div>
-                  <div className='relative h-screen overflow-auto flex flex-col items-start'>
+                  {/* Guideline Table */}
+                  <div className='relative flex flex-col items-start px-20 h-[500px]'>
                     <table className="border-collapse w-full min-h-full">
                       <tbody>
                         <tr>
@@ -273,23 +274,23 @@ function App() {
                     </table>
                   </div>
 
-                 
-                  
+
+
                 </section>
 
               </>
             } />
 
             <Route path="/register" element={
-              <div className='backGround flex justify-center items-center'>
+              <section className='h-screen flex justify-center items-center'>
                 <div className='content text-white shadow-lg flex h-screen w-screen flex-col items-center justify-center'>
                   <h2 className="text-3xl my-10">Register</h2>
                   <div className='flex justify-around my-10'>
-                    <button onClick={registerOfficer} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Register as Traffic Officer</button>
-                    <button onClick={registerUser} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Register as User</button>
+                    <button onClick={() => registerOfficer()} className="border px-5 py-1 mr-3 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Register as Traffic Officer</button>
+                    <button onClick={() => registerUser()} className="border px-5 py-1 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Register as User</button>
                   </div>
                 </div>
-              </div>
+              </section>
             } />
 
             <Route path="/login" element={
@@ -297,8 +298,8 @@ function App() {
                 <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
                   <h2 className="text-3xl my-10">Login</h2>
                   <div className='flex justify-around my-10'>
-                    <button onClick={loginOfficer} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as Officer</button>
-                    <button onClick={loginUser} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as User</button>
+                    <button onClick={loginOfficer} className="border px-5 py-1 mr-3 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Login as Officer</button>
+                    <button onClick={loginUser} className="border px-5 py-1 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Login as User</button>
                   </div>
                 </div>
               </div>
