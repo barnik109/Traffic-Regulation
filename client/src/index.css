@@ -23,3 +23,7 @@ button:hover{
     color: black;
     
 }
+
+.tab-btn{
+    border-radius: 0;
+}

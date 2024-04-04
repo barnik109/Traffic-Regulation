@@ -86,7 +86,7 @@ function App() {
     switch (selectedRow) {
       case "General Tips":
         return (
-          <ul>
+          <ul className='list-disc flex flex-col justify-evenly h-full'>
             <li>Obey all traffic signals, boards, and signs.</li>
             <li>Adhere to permitted speed limits.</li>
             <li>Do Not Drink and Drive.</li>
@@ -104,7 +104,7 @@ function App() {
         );
       case "For Pedestrians":
         return (
-          <ul>
+          <ul className='list-disc flex flex-col justify-evenly h-full'>
             <li>Stop at the curb before entering a street.</li>
             <li>Roads must be crossed only at marked crosswalks. Look left-right-left before crossing a street.</li>
             <li>Always walk on the sidewalk.</li>
@@ -122,7 +122,7 @@ function App() {
         );
       case "For Two-Wheeler Riders":
         return (
-          <ul>
+          <ul className='list-disc flex flex-col justify-evenly h-full'>
             <li>Always wear helmets.</li>
             <li>Never drink and drive.</li>
             <li>Never stop abruptly in traffic. Always move to the left and then slow down.</li>
@@ -146,7 +146,7 @@ function App() {
         );
       case "For Four-Wheeler Drivers":
         return (
-          <ul>
+          <ul className='list-disc flex flex-col justify-evenly h-full'>
             <li>Always obey Road safety rules and regulations stipulated for motor vehicles.</li>
             <li>Look for the traffic signs before you cross signals.</li>
             <li>Drive within the speed limits prescribed. Ideally one should drive at approximately not more than 30 kmph near busy places such as markets and residential areas.</li>
@@ -162,7 +162,7 @@ function App() {
         );
       case "For Children":
         return (
-          <ul>
+          <ul className='list-disc flex flex-col justify-evenly h-full'>
             <li>Always walk on the footpath only. On roads without a footpath, walk on the extreme right-hand side of the roads.</li>
             <li>Do not be impatient on the road. Do not run or rush.</li>
             <li>Cross only at Zebra crossings, traffic signals, subways, foot over-bridges. In cases where such facilities do not exist, look for a safe place to cross.</li>
@@ -177,7 +177,7 @@ function App() {
         );
       case "For Parents":
         return (
-          <ul>
+          <ul className='list-disc flex flex-col justify-evenly h-full'>
             <li>Parents are responsible for the safety of their children during school journeys.</li>
             <li>It must be ensured that the mode of transport arranged by school or by themselves is safe.</li>
             <li>Parents must play the role of vigilant observers. Note down violations committed by school buses and immediately report to the authorities.</li>
@@ -228,7 +228,7 @@ function App() {
                 </section>
 
                 {/* Second Section */}
-                <section>
+                <section className='h-screen'>
                   <div className="flex flex-col items-center">
                     <h3 className="text-3xl font-bold ">Road Safety Guideline</h3>
                     <div className="text-left m-5 px-20">
@@ -241,25 +241,22 @@ function App() {
                     </div>
 
                   </div>
-                  <div className="flex">
+                  <div className="flex px-20">
                     {/* Smaller column */}
-                    <div className="w-1/3 border border-gray-400 cursor-pointer text-center">
-                      <p className={'py-4'} onClick={() => handleRowClick("General Tips")}>General Tips</p>
-                      <p className={'py-4 border border-gray-400'} onClick={() => handleRowClick("For Pedestrians")}>For Pedestrians</p>
-                      <p className={'py-4 border border-gray-400'} onClick={() => handleRowClick("For Two-Wheeler Riders")}>For Two-Wheeler Riders</p>
-                      <p className={'py-4 border border-gray-400'} onClick={() => handleRowClick("For Four-Wheeler Drivers")}>For Four-Wheeler Drivers</p>
-                      <p className={'py-4 border border-gray-400'} onClick={() => handleRowClick("For Children")}>For Children</p>
-                      <p className={'py-4'} onClick={() => handleRowClick("For Parents")}>For Parents</p>
+                    <div className="w-1/3 border-l border-t border-b border-blue-500 cursor-pointer text-center flex flex-col bg-gray-900">
+                      <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("General Tips")}>General Tips</button>
+                      <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Pedestrians")}>For Pedestrians</button>
+                      <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Two-Wheeler Riders")}>For Two-Wheeler Riders</button>
+                      <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Four-Wheeler Drivers")}>For Four-Wheeler Drivers</button>
+                      <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Children")}>For Children</button>
+                      <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Parents")}>For Parents</button>
                     </div>
                     {/* Larger column */}
-                    <div className="border border-gray-400 w-2/3">
+                    <div className="border-r border-t border-b border-blue-500 w-2/3 px-10 py-5 bg-gray-900">
                       {renderData()}
                     </div>
                   </div>
-
-
                  
-                  
                 </section>
 
               </>
