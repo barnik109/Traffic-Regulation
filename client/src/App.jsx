@@ -78,13 +78,19 @@ function App() {
     window.location.href = '/UserLogin';
   };
 
-  const [selectedRow, setSelectedRow] = useState("");
+  const [selectedRow, setSelectedRow] = useState("General Tips");
+
+  // useEffect(() => {
+  //   // Select "General Tips" by default when the component mounts
+  //   handleRowClick("General Tips");
+  // }, []);
 
   const handleRowClick = (rowData) => {
     setSelectedRow(rowData);
   };
 
   const renderData = () => {
+
     switch (selectedRow) {
       case "General Tips":
         return (
@@ -246,7 +252,7 @@ function App() {
                   <div className="flex px-20">
                     {/* Smaller column */}
                     <div className="w-1/3 border-l border-t border-b border-blue-500 cursor-pointer text-center flex flex-col bg-gray-900">
-                      <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("General Tips")}>General Tips</button>
+                      <button id="defaultButton" autoFocus={true}  className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("General Tips")}>General Tips</button>
                       <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Pedestrians")}>For Pedestrians</button>
                       <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Two-Wheeler Riders")}>For Two-Wheeler Riders</button>
                       <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Four-Wheeler Drivers")}>For Four-Wheeler Drivers</button>
@@ -257,9 +263,8 @@ function App() {
                     <div className="border-r border-t border-b border-blue-500 w-2/3 px-10 py-5 bg-gray-900">
                       {renderData()}
                     </div>
-                  </div>
-                 
-                  </div>                 
+                  </div>   
+                  
                 </section>
 
                 <section className='m-20'>
