@@ -12,6 +12,8 @@ import 'tailwindcss/tailwind.css';
 import './App.css';
 import logo from './assets/logo.png';
 import front from './assets/front.png';
+import Emergency from './components/Emergency';
+
 
 function App() {
   const [state, setState] = useState({
@@ -257,8 +259,14 @@ function App() {
                     </div>
                   </div>
                  
+                  </div>                 
                 </section>
 
+                <section className='m-20'>
+                  <div className='flex flex-col items-center'>
+                    <Emergency/>
+                  </div>
+                </section>
               </>
             } />
 
