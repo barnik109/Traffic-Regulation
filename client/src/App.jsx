@@ -12,6 +12,8 @@ import 'tailwindcss/tailwind.css';
 import './App.css';
 import logo from './assets/logo.png';
 import front from './assets/front.png';
+import Emergency from './components/Emergency';
+
 
 function App() {
   const [state, setState] = useState({
@@ -228,7 +230,7 @@ function App() {
                 </section>
 
                 {/* Second Section */}
-                <section>
+                <section className='h-screen'>
                   <div className="flex flex-col items-center">
                     <h3 className="text-3xl font-bold ">Road Safety Guideline</h3>
                     <div className="text-left m-5 px-20">
@@ -255,13 +257,14 @@ function App() {
                     <div className="border border-gray-400 w-2/3">
                       {renderData()}
                     </div>
-                  </div>
-
-
-                 
-                  
+                  </div>                 
                 </section>
 
+                <section className='m-20'>
+                  <div className='flex flex-col items-center'>
+                    <Emergency/>
+                  </div>
+                </section>
               </>
             } />
 
