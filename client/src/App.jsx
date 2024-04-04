@@ -200,7 +200,7 @@ function App() {
         <span className='max-w-full'><img className='w-36' src={logo} alt="" /></span>
         <nav>
           <ul className="flex space-x-4">
-            <li className="hover:underline cursor-pointer">HOME</li>
+            <li className="hover:underline cursor-pointer" >HOME</li>
             <li className="hover:underline cursor-pointer">ABOUT</li>
           </ul>
         </nav>
@@ -227,8 +227,8 @@ function App() {
                   </div>
                 </section>
 
-                {/* Guidline Section */}
-                <section className='h-screen'>
+                {/* Second Section */}
+                <section>
                   <div className="flex flex-col items-center">
                     <h3 className="text-3xl font-bold ">Road Safety Guideline</h3>
                     <div className="text-left m-5 px-20">
@@ -241,56 +241,40 @@ function App() {
                     </div>
 
                   </div>
-                  {/* Guideline Table */}
-                  <div className='relative flex flex-col items-start px-20 h-[500px]'>
-                    <table className="border-collapse w-full min-h-full">
-                      <tbody>
-                        <tr>
-                          {/* Smaller column */}
-                          <td className='w-1/3 border border-gray-400 px-2 py-1 cursor-pointer ' onClick={() => handleRowClick("General Tips")}>
-                            General Tips
-                          </td>
-                          {/* Larger column */}
-                          <td className="border border-gray-400 px-4 py-2" rowSpan="6">
-                            {renderData()}
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="border border-gray-400 px-2 py-1 cursor-pointer" onClick={() => handleRowClick("For Pedestrians")}>For Pedestrians</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-gray-400 px-2 py-1 cursor-pointer" onClick={() => handleRowClick("For Two-Wheeler Riders")}>For Two-Wheeler Riders</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-gray-400 px-2 py-1 cursor-pointer" onClick={() => handleRowClick("For Four-Wheeler Drivers")}>For Four-Wheeler Drivers</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-gray-400 px-2 py-1 cursor-pointer" onClick={() => handleRowClick("For Children")}>For Children</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-gray-400 px-2 py-1 cursor-pointer" onClick={() => handleRowClick("For Parents")}>For Parents</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <div className="flex">
+                    {/* Smaller column */}
+                    <div className="w-1/3 border border-gray-400 cursor-pointer text-center">
+                      <p className={'py-4'} onClick={() => handleRowClick("General Tips")}>General Tips</p>
+                      <p className={'py-4 border border-gray-400'} onClick={() => handleRowClick("For Pedestrians")}>For Pedestrians</p>
+                      <p className={'py-4 border border-gray-400'} onClick={() => handleRowClick("For Two-Wheeler Riders")}>For Two-Wheeler Riders</p>
+                      <p className={'py-4 border border-gray-400'} onClick={() => handleRowClick("For Four-Wheeler Drivers")}>For Four-Wheeler Drivers</p>
+                      <p className={'py-4 border border-gray-400'} onClick={() => handleRowClick("For Children")}>For Children</p>
+                      <p className={'py-4'} onClick={() => handleRowClick("For Parents")}>For Parents</p>
+                    </div>
+                    {/* Larger column */}
+                    <div className="border border-gray-400 w-2/3">
+                      {renderData()}
+                    </div>
                   </div>
 
 
-
+                 
+                  
                 </section>
 
               </>
             } />
 
             <Route path="/register" element={
-              <section className='h-screen flex justify-center items-center'>
+              <div className='backGround flex justify-center items-center'>
                 <div className='content text-white shadow-lg flex h-screen w-screen flex-col items-center justify-center'>
                   <h2 className="text-3xl my-10">Register</h2>
                   <div className='flex justify-around my-10'>
-                    <button onClick={() => registerOfficer()} className="border px-5 py-1 mr-3 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Register as Traffic Officer</button>
-                    <button onClick={() => registerUser()} className="border px-5 py-1 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Register as User</button>
+                    <button onClick={registerOfficer} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Register as Traffic Officer</button>
+                    <button onClick={registerUser} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Register as User</button>
                   </div>
                 </div>
-              </section>
+              </div>
             } />
 
             <Route path="/login" element={
@@ -298,8 +282,8 @@ function App() {
                 <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
                   <h2 className="text-3xl my-10">Login</h2>
                   <div className='flex justify-around my-10'>
-                    <button onClick={loginOfficer} className="border px-5 py-1 mr-3 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Login as Officer</button>
-                    <button onClick={loginUser} className="border px-5 py-1 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Login as User</button>
+                    <button onClick={loginOfficer} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as Officer</button>
+                    <button onClick={loginUser} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as User</button>
                   </div>
                 </div>
               </div>
