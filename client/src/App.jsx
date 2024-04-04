@@ -80,11 +80,6 @@ function App() {
 
   const [selectedRow, setSelectedRow] = useState("General Tips");
 
-  // useEffect(() => {
-  //   // Select "General Tips" by default when the component mounts
-  //   handleRowClick("General Tips");
-  // }, []);
-
   const handleRowClick = (rowData) => {
     setSelectedRow(rowData);
   };
