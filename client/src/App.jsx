@@ -208,7 +208,7 @@ function App() {
           </ul>
         </nav>
       </header>
-      <main className="flex-grow container mx-auto px-4">
+      <main className="flex-grow container mx-auto ">
         <Router>
           <Routes>
             <Route exact path="/" element={
@@ -232,7 +232,7 @@ function App() {
 
                 {/* Second Section */}
                 <section className='h-screen'>
-                  <div className="flex flex-col items-center">
+                  <div className="flex flex-col items-center text-gray-200">
                     <h3 className="text-3xl font-bold ">Road Safety Guideline</h3>
                     <div className="text-left m-5 px-20">
                       <p>
@@ -244,10 +244,10 @@ function App() {
                     </div>
 
                   </div>
-                  <div className="flex px-20">
+                  <div className="flex px-20 text-gray-200">
                     {/* Smaller column */}
                     <div className="w-1/3 border-l border-t border-b border-blue-500 cursor-pointer text-center flex flex-col bg-gray-900">
-                      <button id="defaultButton" autoFocus={true}  className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("General Tips")}>General Tips</button>
+                      <button id="defaultButton" autoFocus={true} className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("General Tips")}>General Tips</button>
                       <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Pedestrians")}>For Pedestrians</button>
                       <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Two-Wheeler Riders")}>For Two-Wheeler Riders</button>
                       <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Four-Wheeler Drivers")}>For Four-Wheeler Drivers</button>
@@ -258,14 +258,12 @@ function App() {
                     <div className="border-r border-t border-b border-blue-500 w-2/3 px-10 py-5 bg-gray-900">
                       {renderData()}
                     </div>
-                  </div>   
-                  
+                  </div>
+
                 </section>
 
-                <section className='m-20'>
-                  <div className='flex flex-col items-center'>
-                    <Emergency/>
-                  </div>
+                <section className='h-screen bg-white'>
+                  <Emergency />
                 </section>
               </>
             } />
