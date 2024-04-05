@@ -208,7 +208,7 @@ function App() {
           </ul>
         </nav>
       </header>
-      <main className="flex-grow container mx-auto ">
+      <main className="flex-grow mx-auto ">
         <Router>
           <Routes>
             <Route exact path="/" element={
