@@ -13,6 +13,8 @@ import './App.css';
 import logo from './assets/logo.png';
 import front from './assets/front.png';
 import Emergency from './components/Emergency';
+import Faqpage from './components/Faqpage';
+import Contact from './components/Contact';
 
 
 function App() {
@@ -264,6 +266,14 @@ function App() {
 
                 <section className='h-screen bg-white'>
                   <Emergency />
+                </section>
+
+                <section>
+                  <Faqpage/>
+                </section>
+
+                <section>
+                  <Contact/>
                 </section>
               </>
             } />
