@@ -15,6 +15,7 @@ import front from './assets/front.png';
 import Emergency from './components/Emergency';
 import Faqpage from './components/Faqpage';
 import Contact from './components/Contact';
+import AboutUs from './AboutUs/AboutUs';
 
 
 function App() {
@@ -79,6 +80,10 @@ function App() {
   const loginUser = () => {
     window.location.href = '/UserLogin';
   };
+
+  const handleAbout = () => { 
+    window.location.href = '/about';
+  }
 
   const [selectedRow, setSelectedRow] = useState("General Tips");
 
@@ -200,22 +205,23 @@ function App() {
   };
 
   return (
-    <div className="text-white min-h-screen flex flex-col bg-black">
-      <header className="flex justify-between items-center p-5 z-10">
-        <span className='max-w-full'><img className='w-36' src={logo} alt="" /></span>
-        <nav>
-          <ul className="flex space-x-4">
-            <li className="hover:underline cursor-pointer" >HOME</li>
-            <li className="hover:underline cursor-pointer">ABOUT</li>
-          </ul>
-        </nav>
-      </header>
-      <main className="flex-grow mx-auto ">
+    <>
         <Router>
           <Routes>
             <Route exact path="/" element={
               <>
-                {/* Main section */}
+            {/* Main section */}
+            <div className="text-white min-h-screen flex flex-col bg-black">
+              <header className="flex justify-between items-center p-5 z-10">
+                <span className='max-w-full'><img className='w-36' src={logo} alt="" /></span>
+                <nav>
+                  <ul className="flex space-x-4">
+                    <li className="hover:underline cursor-pointer" >HOME</li>
+                    <li className="hover:underline cursor-pointer" onClick={handleAbout}>ABOUT</li>
+                  </ul>
+                </nav>
+              </header>
+              <main className="flex-grow mx-auto ">
                 <section className='h-screen flex justify-center items-center'>
                   <div className='text-white flex justify-center'>
                     <div className='w-1/2 mx-10 px-10'>
@@ -275,6 +281,8 @@ function App() {
                 <section>
                   <Contact/>
                 </section>
+              </main>
+               </div>
               </>
             } />
 
@@ -283,8 +291,18 @@ function App() {
                 <div className='content text-white shadow-lg flex h-screen w-screen flex-col items-center justify-center'>
                   <h2 className="text-3xl my-10">Register</h2>
                   <div className='flex justify-around my-10'>
-                    <button onClick={registerOfficer} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Register as Traffic Officer</button>
-                    <button onClick={registerUser} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Register as User</button>
+                    <div className='w-40'>
+                      <div>
+                        <img src="../src/assets/trafficoff.png" alt="" />
+                      </div>
+                      <button onClick={registerOfficer} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Register as Traffic Officer</button>
+                    </div>
+                    <div className='w-40'>
+                      <div >
+                        <img className='h-66' src="../src/assets/user.png" alt="" />
+                      </div>
+                      <button onClick={registerUser} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Register as User</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -310,13 +328,15 @@ function App() {
 
             <Route path='/userDashboard' element={<PublicCheck contract={state.contract} />} />
 
+            <Route path='/about' element={<AboutUs/>} />
+
           </Routes>
         </Router>
-      </main>
+      
       <footer className="p-5">
         {/* Footer content goes here */}
       </footer>
-    </div>
+      </>
   );
 }
 
