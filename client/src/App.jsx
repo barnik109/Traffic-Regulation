@@ -16,7 +16,6 @@ import Emergency from './components/Emergency';
 import Faqpage from './components/Faqpage';
 import Contact from './components/Contact';
 
-
 function App() {
   const [state, setState] = useState({
     provider: null,
@@ -268,12 +267,12 @@ function App() {
                   <Emergency />
                 </section>
 
-                <section>
-                  <Faqpage/>
+                <section className='h-screen bg-gray-900'>
+                  <Faqpage />
                 </section>
 
                 <section>
-                  <Contact/>
+                  <Contact />
                 </section>
               </>
             } />
