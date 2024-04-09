@@ -17,7 +17,6 @@ import Faqpage from './components/Faqpage';
 import Contact from './components/Contact';
 import AboutUs from './AboutUs/AboutUs';
 
-
 function App() {
   const [state, setState] = useState({
     provider: null,
@@ -274,12 +273,12 @@ function App() {
                   <Emergency />
                 </section>
 
-                <section>
-                  <Faqpage/>
+                <section className='h-screen bg-gray-900'>
+                  <Faqpage />
                 </section>
 
                 <section>
-                  <Contact/>
+                  <Contact />
                 </section>
               </main>
                </div>
@@ -340,4 +339,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
