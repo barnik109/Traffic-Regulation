@@ -105,6 +105,28 @@ app.post('/login', async (req, res) => {
     }
 });
 
+// Endpoint for QA officer login
+app.post('/login/officer', async (req, res) => {
+    const { badgeNumber, password } = req.body;
+
+    try {
+        // Find the officer with the provided badge number
+        const officer = await OfficerModel.findOne({ badgeNumber });
+
+        // Check if the officer exists and the password matches
+        if (!officer || officer.password !== password) {
+            return res.status(401).json({ success: false, message: 'Invalid badge number or password' });
+        }
+
+        // If the badge number and password are correct, return a success message
+        res.json({ success: true, message: 'Login successful' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'An error occurred while logging in' });
+    }
+});
+
+
 
 // Endpoint to check violations (accessible to users)
 app.get('/check-violations/:licenseNumber', async (req, res) => {

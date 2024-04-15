@@ -25,6 +25,14 @@ function App() {
   });
 
   const [userType, setUserType] = useState(null);
+  const [officerBadgeNumber, setOfficerBadgeNumber] = useState(null);
+
+
+  const handleOfficerLogin = (badgeNumber) => {
+    // Update state with the badge number
+    setOfficerBadgeNumber(badgeNumber);
+    // You can perform other actions here after successful login
+  };
 
   useEffect(() => {
     const initialize = async () => {
@@ -211,7 +219,7 @@ function App() {
               <>
             {/* Main section */}
             <div className="text-white min-h-screen flex flex-col bg-black">
-              <header className="flex justify-between items-center p-5 z-10">
+                <header className="flex justify-between items-center p-5 z-10">
                 <span className='max-w-full'><img className='w-36' src={logo} alt="" /></span>
                 <nav>
                   <ul className="flex space-x-4">
@@ -220,7 +228,7 @@ function App() {
                   </ul>
                 </nav>
               </header>
-              <main className="flex-grow mx-auto ">
+                <main className="flex-grow mx-auto">
                 <section className='h-screen flex justify-center items-center'>
                   <div className='text-white flex justify-center'>
                     <div className='w-1/2 mx-10 px-10'>
@@ -233,7 +241,7 @@ function App() {
                         <button onClick={redirectToLogin} className="border px-5 py-1 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Login</button>
                       </div>
                     </div>
-                    <span className='w-1/2 flex justify-center'><img className='' src={front} alt="" /></span>
+                    <span className='w-1/2 flex justify-center sm:mt-4 sm:ml-6'><img className='' src={front} alt="" /></span>
                   </div>
                 </section>
 
@@ -277,7 +285,7 @@ function App() {
                   <Faqpage />
                 </section>
 
-                <section>
+                <section className='h-screen bg-white'>
                   <Contact />
                 </section>
               </main>
@@ -285,56 +293,61 @@ function App() {
               </>
             } />
 
-            <Route path="/register" element={
-              <div className='backGround flex justify-center items-center'>
-                <div className='content text-white shadow-lg flex h-screen w-screen flex-col items-center justify-center'>
-                  <h2 className="text-3xl my-10">Register</h2>
-                  <div className='flex justify-around my-10'>
-                    <div className='w-40'>
-                      <div>
-                        <img src="../src/assets/trafficoff.png" alt="" />
-                      </div>
-                      <button onClick={registerOfficer} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Register as Traffic Officer</button>
-                    </div>
-                    <div className='w-40'>
-                      <div >
-                        <img className='h-66' src="../src/assets/user.png" alt="" />
-                      </div>
-                      <button onClick={registerUser} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Register as User</button>
-                    </div>
-                  </div>
+          <Route path="/register" element={
+            <>
+              <div className='flex flex-col md:flex-row h-screen'>
+                <div className='w-full md:w-6/12 bg-white flex flex-col items-center justify-center space-y-4'>
+                  <img className='h-80' src="../src/assets/trafficoff.png" alt="" />
+                  <button className='bg-black text-white py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={registerOfficer}>Register as Officer</button>
+                </div>
+                <div className='w-full md:w-6/12 bg-black flex flex-col items-center justify-center space-y-4'>
+                  <img className='h-80' src="../src/assets/user.png" alt="" />
+                  <button className='bg-white text-black py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={registerUser}>Register as User</button>
                 </div>
               </div>
-            } />
+            </>
+          } />
+
+
+
 
             <Route path="/login" element={
-              <div className='backGround flex justify-center items-center'>
-                <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
-                  <h2 className="text-3xl my-10">Login</h2>
-                  <div className='flex justify-around my-10'>
-                    <button onClick={loginOfficer} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as Officer</button>
-                    <button onClick={loginUser} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as User</button>
-                  </div>
-                </div>
+              // <div className='backGround flex justify-center items-center'>
+              //   <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
+              //     <h2 className="text-3xl my-10">Login</h2>
+              //     <div className='flex justify-around my-10'>
+              //       <button onClick={loginOfficer} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as Officer</button>
+              //       <button onClick={loginUser} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as User</button>
+              //     </div>
+              //   </div>
+            // </div>
+            <div className='flex flex-col md:flex-row h-screen'>
+              <div className='w-full md:w-6/12 bg-white flex flex-col items-center justify-center space-y-4'>
+                <img className='h-80' src="../src/assets/trafficoff.png" alt="" />
+                <button className='bg-black text-white py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={loginOfficer}>Login as Officer</button>
               </div>
+              <div className='w-full md:w-6/12 bg-black flex flex-col items-center justify-center space-y-4'>
+                <img className='h-80' src="../src/assets/user.png" alt="" />
+                <button className='bg-white text-black py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={loginUser}>Login as User</button>
+              </div>
+            </div>
             } />
 
             <Route path='/UserReg' element={<UserRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />} />
             <Route path='/OfficerReg' element={<OfficerRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />} />
 
             <Route path='/UserLogin' element={<UserLogin handleUserLogin={() => handleUserTypeSelection(null)} />} />
-            <Route path='/OfficerLogin' element={<OfficerLogin handleOfficerLogin={() => handleUserTypeSelection(null)} />} />
+          <Route path='/OfficerLogin' element={<OfficerLogin handleOfficerLogin={handleOfficerLogin} />} />
 
-            <Route path='/userDashboard' element={<PublicCheck contract={state.contract} />} />
+          <Route path='/userDashboard' element={<PublicCheck contract={state.contract} />} />
+          <Route path='/officerDashboard' element={<TrafficOfficer contract={state.contract} officerBadgeNumber={officerBadgeNumber} />} />
 
             <Route path='/about' element={<AboutUs/>} />
 
           </Routes>
         </Router>
       
-      <footer className="p-5">
-        {/* Footer content goes here */}
-      </footer>
+     
       </>
   );
 }

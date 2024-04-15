@@ -59,7 +59,7 @@ const PublicCheck = ({ contract }) => {
 
   return (
     <div className="content">
-    <div className="bg-white h-screen flex items-center justify-center overflow-scroll">
+      <div className="bg-white h-screen flex items-center justify-center">
       <div>
         <div className="bg-gray-200 rounded-3xl shadow-lg w-[30rem] h-[] flex flex-col items-center py-5">
           <h2 className="text-2xl">Check Violation Details</h2>

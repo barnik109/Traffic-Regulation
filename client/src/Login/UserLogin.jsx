@@ -20,7 +20,7 @@ const UserLogin = ({ handleUserLogin }) => {
             // Check if the login was successful
             if (response.data.success) {
                 // Call the handleUserLogin function to handle successful login
-                handleUserLogin();
+                // handleUserLogin();
                 alert("login successful")
                 window.location.href = "/userDashboard";
             } else {
@@ -34,16 +34,16 @@ const UserLogin = ({ handleUserLogin }) => {
     };
 
     return (
-        <div className="content">
+        <div className="content bg-content-background">
             <div className="backGround overflow-y-auto py-6 flex flex-col h-screen items-center sm:py-12">
-                <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+                <div className="relative w-full sm:max-w-xl sm:mx-auto">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
                     <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                         <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
-                            <h2 className="text-2xl font-semibold mb-4 text-black">User Login</h2>
+                            <h2 className="text-4xl font-semibold mb-10 text-black text-center sm:text-left">User Login</h2>
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 <div className="mb-4">
-                                    <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username:</label>
+                                    <label htmlFor="username" className="block text-lg font-medium text-gray-700">Username:</label>
                                     <input
                                         id="username"
                                         type="text"
@@ -54,7 +54,7 @@ const UserLogin = ({ handleUserLogin }) => {
                                     />
                                 </div>
                                 <div className="mb-4">
-                                    <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password:</label>
+                                    <label htmlFor="password" className="block text-lg font-medium text-gray-700">Password:</label>
                                     <input
                                         id="password"
                                         type="password"
@@ -64,13 +64,14 @@ const UserLogin = ({ handleUserLogin }) => {
                                         className="mt-1 p-2 w-full border border-gray-300 rounded-md text-black"
                                     />
                                 </div>
-                                <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors duration-300">Login</button>
+                                <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors duration-300 w-full sm:w-auto">Login</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     );
 };
 
