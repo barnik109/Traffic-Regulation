@@ -2,35 +2,74 @@ import React from 'react';
 
 const Contact = () => {
     return (
-        <div className='flex flex-col md:flex-row justify-between'>
-            <div className="md:w-1/2 ml-8">
-                <div><h1 className='text-black text-5xl font-bold'>CONTACT US</h1></div>
-                <div className="mt-8">
-                    <div className='text-black text-2xl'><span>📞</span> Call Us</div>
-                    <div className='text-black mt-2'>1 (234) 567-891, 1 (234) 987-654</div>
-                </div>
-                <div className="mt-8">
-                    <div className='text-black text-2xl'><span>📍</span> Location</div>
-                    <div className='text-black mt-2'>121 Rock Street, 21 Avenue, New York, NY 92103-9000</div>
-                </div>
-                <div className="mt-8">
-                    <div className='text-black text-2xl'><span>⏰</span> Business Hours</div>
-                    <div className='text-black mt-2'>Mon – Fri …… 10 am – 8 pm, Sat, Sun ....… Closed</div>
+        <div className="relative h-screen w-full px-10 bg-gray-900 flex justify-center items-center"
+            style={{
+                backgroundImage: "url('https://images7.alphacoders.com/123/1239294.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+            }}
+        >
+
+            <div className='w-1/3 ml-10'>
+                <h2 className=" top-8 left-8 text-6xl font-semibold text-white">CONTACT US</h2>
+                <div className=" top-20 left-8 items-center mt-20">
+                    <p className="text-3xl font-semibold text-white mb-5">Location</p>
+                    <p className="text-lg font-semibold text-white">Jalpaiguri Governmet Engineering College,</p>
+                    <p className='text-lg font-semibold text-white'>Jalpaigrui, India</p>
                 </div>
             </div>
-            <div className="md:w-1/2 mt-8 md:mt-0 mr-12">
-                <form action="">
-                    <div className='flex flex-col md:flex-row justify-between'>
-                        <input type="text" placeholder="Enter your Name" className="block w-full md:w-5/12 p-4 border-b-4 border-black rounded-md mb-4 md:mb-0" />
-                        <input type="email" placeholder="Enter a valid email address" className="block w-full md:w-5/12 p-4 border-b-4 border-black rounded-md mb-4 md:ml-4 md:mb-0" />
+
+
+            <div className='relative w-1/2 bg-gray-100/30 py-5 rounded-[20px]'>
+                
+                <form className="text-white flex flex-col justify-center items-center">
+                    <div className='flex flex-col w-2/3'>
+                        <label htmlFor="name" className="mt-5 text-lg font-medium">
+                            Your Name
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            className="  rounded-md"
+                            placeholder="Enter your name"
+                        />
                     </div>
-                    <div>
-                        <input type="text" placeholder='Enter your Address' className='block w-full p-4 border-b-4 border-black rounded-md mb-4' />
+                    <div className='flex flex-col w-2/3'>
+                        <label htmlFor="email" className="mt-5 text-lg font-medium">
+                            Email Address
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            className="  rounded-md"
+                            placeholder="Enter your email address"
+                        />
                     </div>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Enter your Message" className="block w-full p-4 border-black border-b-4 rounded-md mb-4"></textarea>
-                    <input type="submit" value="Submit" className="block w-full p-4 bg-black text-white rounded-md cursor-pointer" />
+                    <div className='flex flex-col w-2/3'>
+                        <label htmlFor="message" className="mt-5 text-lg font-medium ">
+                            Message
+                        </label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="4"
+                            className="  rounded-md"
+                            placeholder="Enter your message"
+                        ></textarea>
+                    </div>
+                    <div className='mt-5'>
+                        <button
+                            type="submit"
+                            className=" flex justify-center py-3 px-6 mb-5 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        >
+                            Submit
+                        </button>
+                    </div>
                 </form>
             </div>
+
         </div>
     );
 };
