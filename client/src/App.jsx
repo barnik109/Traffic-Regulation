@@ -16,6 +16,7 @@ import Emergency from './components/Emergency';
 import Faqpage from './components/Faqpage';
 import Contact from './components/Contact';
 import AboutUs from './AboutUs/AboutUs';
+import Footer from './components/footer';
 
 function App() {
   const [state, setState] = useState({
@@ -332,9 +333,9 @@ function App() {
           </Routes>
         </Router>
       
-      <footer className="p-5">
-        {/* Footer content goes here */}
-      </footer>
+      <section>
+        <Footer />
+      </section>
       </>
   );
 }
