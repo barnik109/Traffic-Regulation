@@ -28,3 +28,12 @@ button:hover{
 .tab-btn{
     border-radius: 0;
 }
+
+input, textarea{
+    height: 40px;
+    background: none;
+    border-bottom: 1px solid white;
+}
+input::after{
+    
+}
