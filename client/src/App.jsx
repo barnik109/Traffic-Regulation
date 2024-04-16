@@ -18,7 +18,8 @@ import Contact from './components/Contact';
 import AboutUs from './AboutUs/AboutUs';
 import Footer from './components/footer';
 import SignUp from './assets/Signup.gif';
-import Login from './assets/Login.gif'
+import Login from './assets/Login.gif';
+import { motion } from "framer-motion";
 
 function App() {
   const [state, setState] = useState({
@@ -269,13 +270,19 @@ function App() {
                   <section className='h-screen flex justify-center items-center'>
                     <div className='text-white flex justify-center'>
                       <div className='w-1/2 mx-10 px-10'>
-                        <div className="bg-black border border-sky-500 bg-opacity-70 backdrop-blur-lg rounded-3xl drop-shadow-lg p-5 flex flex-col justify-center items-center">
+                        <motion.div initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{
+                            duration: 0.8,
+                            delay: 0.1,
+                            ease: [0, 0.71, 0.2, 1.01]
+                          }} className="bg-black border border-sky-500 bg-opacity-70 backdrop-blur-lg rounded-3xl drop-shadow-lg p-5 flex flex-col justify-center items-center">
                           <h2 className="text-5xl font-bold my-8">The first Blockchain Based Traffic Regulation System in India</h2>
                           <p className='text-lg'>We believe in revolutionizing how traffic regulations are implemented and enforced. By leveraging the power of blockchain technology, we aim to create a transparent, efficient, and secure system that brings trust and accountability to traffic management.</p>
-                        </div>
-                        <div className='my-5 reg-btn'>
-                          <button onClick={redirectToRegister} className="border px-5 py-1 mr-3 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Register</button>
-                          <button onClick={redirectToLogin} className="border px-5 py-1 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Login</button>
+                        </motion.div>
+                        <div className='my-5 reg-btn flex gap-10'>
+                          <motion.button whileHover={{ scale: 1.2 }} onClick={redirectToRegister} className="border px-5 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Register</motion.button>
+                          <motion.button whileHover={{ scale: 1.2 }} onClick={redirectToLogin} className="border px-5 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Login</motion.button>
                         </div>
                       </div>
                       <span className='w-1/2 flex justify-center sm:mt-4 sm:ml-6'><img className='' src={front} alt="" /></span>
@@ -354,19 +361,19 @@ function App() {
 
           <Route path="/login" element={
             <div className='flex h-screen bg-violet-300 p-10 justify-center'>
-            <div className="w-2/3 flex flex-col gap-20 justify-center">
-              <div className="">
-                <h4 className='text-9xl font-bold'>Please login to proceed</h4>
-              </div>
-              <div className='flex gap-20 ml-10'>
-                <button className='bg-black text-white py-2 px-4 rounded-full shadow-lg text-xl font-semibold' onClick={loginOfficer}>Login as Officer</button>
-                <button className='bg-black text-white py-2 px-4 rounded-full shadow-lg text-xl font-semibold' onClick={loginUser}>Login as User</button>
+              <div className="w-2/3 flex flex-col gap-20 justify-center">
+                <div className="">
+                  <h4 className='text-9xl font-bold'>Please login to proceed.</h4>
                 </div>
-                </div>
-                <div className="w-1/2 flex justify-center items-center">
-                  <img className='' src={Login} alt="" />
+                <div className='flex gap-20 ml-10'>
+                  <button className='bg-black text-white py-2 px-4 rounded-full shadow-lg text-xl font-semibold' onClick={loginOfficer}>Login as Officer</button>
+                  <button className='bg-black text-white py-2 px-4 rounded-full shadow-lg text-xl font-semibold' onClick={loginUser}>Login as User</button>
                 </div>
               </div>
+              <div className="w-1/2 flex justify-center items-center">
+                <img className='' src={Login} alt="" />
+              </div>
+            </div>
           } />
 
           <Route path='/UserReg' element={<UserRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />} />
