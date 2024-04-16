@@ -18,6 +18,7 @@ import Contact from './components/Contact';
 import AboutUs from './AboutUs/AboutUs';
 import Footer from './components/footer';
 import SignUp from './assets/Signup.gif';
+import Login from './assets/Login.gif'
 
 function App() {
   const [state, setState] = useState({
@@ -332,13 +333,13 @@ function App() {
           <Route path="/register" element={
             <>
               <div className='flex h-screen bg-violet-300 p-10 justify-center'>
-                <div className="w-2/3 flex flex-col gap-20 justify-center items-center">
+                <div className="w-2/3 flex flex-col gap-20 justify-center">
                   <div className="">
                     <h4 className='text-9xl font-bold'>Register yourself to use this Service.</h4>
                   </div>
-                  <div className='flex gap-20 flex-row-reverse'>
-                    <button className='bg-black text-white py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={registerOfficer}>Register as Officer</button>
-                    <button className='bg-black text-white py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={registerUser}>Register as User</button>
+                  <div className='flex gap-20 ml-10'>
+                    <button className='bg-zinc-800 text-white py-2 px-4 rounded-full shadow-lg  text-xl font-semibold' onClick={registerOfficer}>Register as Officer</button>
+                    <button className='bg-zinc-800 text-white py-2 px-4 rounded-full shadow-lg  text-xl font-semibold' onClick={registerUser}>Register as User</button>
                   </div>
                 </div>
                 <div className="w-1/2 flex justify-center items-center">
@@ -352,25 +353,20 @@ function App() {
 
 
           <Route path="/login" element={
-            // <div className='backGround flex justify-center items-center'>
-            //   <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
-            //     <h2 className="text-3xl my-10">Login</h2>
-            //     <div className='flex justify-around my-10'>
-            //       <button onClick={loginOfficer} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as Officer</button>
-            //       <button onClick={loginUser} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as User</button>
-            //     </div>
-            //   </div>
-            // </div>
-            <div className='flex flex-col md:flex-row h-screen'>
-              <div className='w-full md:w-6/12 bg-white flex flex-col items-center justify-center space-y-4'>
-                <img className='h-80' src="../src/assets/trafficoff.png" alt="" />
-                <button className='bg-black text-white py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={loginOfficer}>Login as Officer</button>
+            <div className='flex h-screen bg-violet-300 p-10 justify-center'>
+            <div className="w-2/3 flex flex-col gap-20 justify-center">
+              <div className="">
+                <h4 className='text-9xl font-bold'>Please login to proceed</h4>
               </div>
-              <div className='w-full md:w-6/12 bg-black flex flex-col items-center justify-center space-y-4'>
-                <img className='h-80' src="../src/assets/user.png" alt="" />
-                <button className='bg-white text-black py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={loginUser}>Login as User</button>
+              <div className='flex gap-20 ml-10'>
+                <button className='bg-black text-white py-2 px-4 rounded-full shadow-lg text-xl font-semibold' onClick={loginOfficer}>Login as Officer</button>
+                <button className='bg-black text-white py-2 px-4 rounded-full shadow-lg text-xl font-semibold' onClick={loginUser}>Login as User</button>
+                </div>
+                </div>
+                <div className="w-1/2 flex justify-center items-center">
+                  <img className='' src={Login} alt="" />
+                </div>
               </div>
-            </div>
           } />
 
           <Route path='/UserReg' element={<UserRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />} />
