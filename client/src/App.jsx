@@ -17,6 +17,7 @@ import Faqpage from './components/Faqpage';
 import Contact from './components/Contact';
 import AboutUs from './AboutUs/AboutUs';
 import Footer from './components/footer';
+import SignUp from './assets/Signup.gif';
 
 function App() {
   const [state, setState] = useState({
@@ -89,7 +90,7 @@ function App() {
     window.location.href = '/UserLogin';
   };
 
-  const handleAbout = () => { 
+  const handleAbout = () => {
     window.location.href = '/about';
   }
 
@@ -214,96 +215,100 @@ function App() {
 
   return (
     <>
-        <Router>
-          <Routes>
-            <Route exact path="/" element={
-              <>
-            {/* Main section */}
-            <div className="text-white min-h-screen flex flex-col bg-black">
+      <Router>
+        <Routes>
+          <Route exact path="/" element={
+            <>
+              {/* Main section */}
+              <div className="text-white min-h-screen flex flex-col bg-black">
                 <header className="flex justify-between items-center p-5 z-10">
-                <span className='max-w-full'><img className='w-36' src={logo} alt="" /></span>
-                <nav>
-                  <ul className="flex space-x-4">
-                    <li className="hover:underline cursor-pointer" >HOME</li>
-                    <li className="hover:underline cursor-pointer" onClick={handleAbout}>ABOUT</li>
-                  </ul>
-                </nav>
-              </header>
+                  <span className='max-w-full'><img className='w-36' src={logo} alt="" /></span>
+                  <nav>
+                    <ul className="flex space-x-4">
+                      <li className="hover:underline cursor-pointer" >HOME</li>
+                      <li className="hover:underline cursor-pointer" onClick={handleAbout}>ABOUT</li>
+                    </ul>
+                  </nav>
+                </header>
                 <main className="flex-grow mx-auto">
-                <section className='h-screen flex justify-center items-center'>
-                  <div className='text-white flex justify-center'>
-                    <div className='w-1/2 mx-10 px-10'>
-                      <div className="bg-black border border-sky-500 bg-opacity-70 backdrop-blur-lg rounded-3xl drop-shadow-lg p-5 flex flex-col justify-center items-center">
-                        <h2 className="text-5xl font-bold my-8">The first Blockchain Based Traffic Regulation System in India</h2>
-                        <p className='text-lg'>We believe in revolutionizing how traffic regulations are implemented and enforced. By leveraging the power of blockchain technology, we aim to create a transparent, efficient, and secure system that brings trust and accountability to traffic management.</p>
+                  <section className='h-screen flex justify-center items-center'>
+                    <div className='text-white flex justify-center'>
+                      <div className='w-1/2 mx-10 px-10'>
+                        <div className="bg-black border border-sky-500 bg-opacity-70 backdrop-blur-lg rounded-3xl drop-shadow-lg p-5 flex flex-col justify-center items-center">
+                          <h2 className="text-5xl font-bold my-8">The first Blockchain Based Traffic Regulation System in India</h2>
+                          <p className='text-lg'>We believe in revolutionizing how traffic regulations are implemented and enforced. By leveraging the power of blockchain technology, we aim to create a transparent, efficient, and secure system that brings trust and accountability to traffic management.</p>
+                        </div>
+                        <div className='my-5 reg-btn'>
+                          <button onClick={redirectToRegister} className="border px-5 py-1 mr-3 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Register</button>
+                          <button onClick={redirectToLogin} className="border px-5 py-1 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Login</button>
+                        </div>
                       </div>
-                      <div className='my-5 reg-btn'>
-                        <button onClick={redirectToRegister} className="border px-5 py-1 mr-3 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Register</button>
-                        <button onClick={redirectToLogin} className="border px-5 py-1 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full  shadow-lg shadow-blue-700/50 text-white">Login</button>
+                      <span className='w-1/2 flex justify-center sm:mt-4 sm:ml-6'><img className='' src={front} alt="" /></span>
+                    </div>
+                  </section>
+
+                  {/* Second Section */}
+                  <section className='h-screen'>
+                    <div className="flex flex-col items-center text-gray-200">
+                      <h3 className="text-3xl font-bold ">Road Safety Guideline</h3>
+                      <div className="text-left m-5 px-20">
+                        <p>
+                          Here you can find essential information about traffic regulations, including speed limits, traffic signs, parking rules, and more.
+                        </p>
+                        <p>
+                          Understanding and following traffic regulations is crucial for safe and efficient transportation. Make sure to stay informed and abide by the rules to contribute to smoother traffic flow and promote road safety.
+                        </p>
+                      </div>
+
+                    </div>
+                    <div className="flex px-20 text-gray-200">
+                      {/* Smaller column */}
+                      <div className="w-1/3 border-l border-t border-b border-blue-500 cursor-pointer text-center flex flex-col bg-gray-900">
+                        <button id="defaultButton" autoFocus={true} className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("General Tips")}>General Tips</button>
+                        <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Pedestrians")}>For Pedestrians</button>
+                        <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Two-Wheeler Riders")}>For Two-Wheeler Riders</button>
+                        <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Four-Wheeler Drivers")}>For Four-Wheeler Drivers</button>
+                        <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Children")}>For Children</button>
+                        <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Parents")}>For Parents</button>
+                      </div>
+                      {/* Larger column */}
+                      <div className="border-r border-t border-b border-blue-500 w-2/3 px-10 py-5 bg-gray-900">
+                        {renderData()}
                       </div>
                     </div>
-                    <span className='w-1/2 flex justify-center sm:mt-4 sm:ml-6'><img className='' src={front} alt="" /></span>
-                  </div>
-                </section>
 
-                {/* Second Section */}
-                <section className='h-screen'>
-                  <div className="flex flex-col items-center text-gray-200">
-                    <h3 className="text-3xl font-bold ">Road Safety Guideline</h3>
-                    <div className="text-left m-5 px-20">
-                      <p>
-                        Here you can find essential information about traffic regulations, including speed limits, traffic signs, parking rules, and more.
-                      </p>
-                      <p>
-                        Understanding and following traffic regulations is crucial for safe and efficient transportation. Make sure to stay informed and abide by the rules to contribute to smoother traffic flow and promote road safety.
-                      </p>
-                    </div>
+                  </section>
 
-                  </div>
-                  <div className="flex px-20 text-gray-200">
-                    {/* Smaller column */}
-                    <div className="w-1/3 border-l border-t border-b border-blue-500 cursor-pointer text-center flex flex-col bg-gray-900">
-                      <button id="defaultButton" autoFocus={true} className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("General Tips")}>General Tips</button>
-                      <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Pedestrians")}>For Pedestrians</button>
-                      <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Two-Wheeler Riders")}>For Two-Wheeler Riders</button>
-                      <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Four-Wheeler Drivers")}>For Four-Wheeler Drivers</button>
-                      <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Children")}>For Children</button>
-                      <button className={'tab-btn border-r border-blue-500 h-full py-5 hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-none focus:ring focus:ring-gray-700'} onClick={() => handleRowClick("For Parents")}>For Parents</button>
-                    </div>
-                    {/* Larger column */}
-                    <div className="border-r border-t border-b border-blue-500 w-2/3 px-10 py-5 bg-gray-900">
-                      {renderData()}
-                    </div>
-                  </div>
+                  <section className='h-screen bg-white'>
+                    <Emergency />
+                  </section>
 
-                </section>
+                  <section className='h-screen bg-gray-900'>
+                    <Faqpage />
+                  </section>
 
-                <section className='h-screen bg-white'>
-                  <Emergency />
-                </section>
-
-                <section className='h-screen bg-gray-900'>
-                  <Faqpage />
-                </section>
-
-                <section className='h-screen bg-white'>
-                  <Contact />
-                </section>
-              </main>
-               </div>
-              </>
-            } />
+                  <section className='h-screen bg-white'>
+                    <Contact />
+                  </section>
+                </main>
+              </div>
+            </>
+          } />
 
           <Route path="/register" element={
             <>
-              <div className='flex flex-col md:flex-row h-screen'>
-                <div className='w-full md:w-6/12 bg-white flex flex-col items-center justify-center space-y-4'>
-                  <img className='h-80' src="../src/assets/trafficoff.png" alt="" />
-                  <button className='bg-black text-white py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={registerOfficer}>Register as Officer</button>
+              <div className='flex h-screen bg-violet-300 p-10 justify-center'>
+                <div className="w-2/3 flex flex-col gap-20 justify-center items-center">
+                  <div className="">
+                    <h4 className='text-9xl font-bold'>Register yourself to use this Service.</h4>
+                  </div>
+                  <div className='flex gap-20 flex-row-reverse'>
+                    <button className='bg-black text-white py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={registerOfficer}>Register as Officer</button>
+                    <button className='bg-black text-white py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={registerUser}>Register as User</button>
+                  </div>
                 </div>
-                <div className='w-full md:w-6/12 bg-black flex flex-col items-center justify-center space-y-4'>
-                  <img className='h-80' src="../src/assets/user.png" alt="" />
-                  <button className='bg-white text-black py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={registerUser}>Register as User</button>
+                <div className="w-1/2 flex justify-center items-center">
+                  <img className='' src={SignUp} alt="" />
                 </div>
               </div>
             </>
@@ -312,15 +317,15 @@ function App() {
 
 
 
-            <Route path="/login" element={
-              // <div className='backGround flex justify-center items-center'>
-              //   <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
-              //     <h2 className="text-3xl my-10">Login</h2>
-              //     <div className='flex justify-around my-10'>
-              //       <button onClick={loginOfficer} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as Officer</button>
-              //       <button onClick={loginUser} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as User</button>
-              //     </div>
-              //   </div>
+          <Route path="/login" element={
+            // <div className='backGround flex justify-center items-center'>
+            //   <div className='content text-white shadow-lg  flex h-screen w-screen flex-col items-center justify-center'>
+            //     <h2 className="text-3xl my-10">Login</h2>
+            //     <div className='flex justify-around my-10'>
+            //       <button onClick={loginOfficer} className="button-style mr-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as Officer</button>
+            //       <button onClick={loginUser} className="button-style ml-4 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Login as User</button>
+            //     </div>
+            //   </div>
             // </div>
             <div className='flex flex-col md:flex-row h-screen'>
               <div className='w-full md:w-6/12 bg-white flex flex-col items-center justify-center space-y-4'>
@@ -332,26 +337,26 @@ function App() {
                 <button className='bg-white text-black py-2 px-4 rounded shadow-lg text-xl font-bold' onClick={loginUser}>Login as User</button>
               </div>
             </div>
-            } />
+          } />
 
-            <Route path='/UserReg' element={<UserRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />} />
-            <Route path='/OfficerReg' element={<OfficerRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />} />
+          <Route path='/UserReg' element={<UserRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />} />
+          <Route path='/OfficerReg' element={<OfficerRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />} />
 
-            <Route path='/UserLogin' element={<UserLogin handleUserLogin={() => handleUserTypeSelection(null)} />} />
+          <Route path='/UserLogin' element={<UserLogin handleUserLogin={() => handleUserTypeSelection(null)} />} />
           <Route path='/OfficerLogin' element={<OfficerLogin handleOfficerLogin={handleOfficerLogin} />} />
 
           <Route path='/userDashboard' element={<PublicCheck contract={state.contract} />} />
           <Route path='/officerDashboard' element={<TrafficOfficer contract={state.contract} officerBadgeNumber={officerBadgeNumber} />} />
 
-            <Route path='/about' element={<AboutUs/>} />
+          <Route path='/about' element={<AboutUs />} />
 
-          </Routes>
-        </Router>
-      
+        </Routes>
+      </Router>
+
       <section>
         <Footer />
       </section>
-      </>
+    </>
   );
 }
 
