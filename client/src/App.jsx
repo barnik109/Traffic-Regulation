@@ -322,7 +322,7 @@ function App() {
             <div className='flex h-screen bg-violet-300 p-10 justify-center'>
             <div className="w-2/3 flex flex-col gap-20 justify-center">
               <div className="">
-                <h4 className='text-9xl font-bold'>Please login to proceed</h4>
+                <h4 className='text-9xl font-bold'>Please login to proceed.</h4>
               </div>
               <div className='flex gap-20 ml-10'>
                 <button className='bg-black text-white py-2 px-4 rounded-full shadow-lg text-xl font-semibold' onClick={loginOfficer}>Login as Officer</button>
