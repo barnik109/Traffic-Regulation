@@ -26,24 +26,13 @@ function App() {
     contract: null
   });
 
-  const [userType, setUserType] = useState(null);
-  const [officerBadgeNumber, setOfficerBadgeNumber] = useState(null);
+  const handleMetaMaskConnect = async () => {
+    const contractAddress = '0x8E8d8135fcDFE2608F28461cca35eFbB856FbdaD';
+    const contractABI = abi.abi;
+    try {
+      const { ethereum } = window;
 
-
-  const handleOfficerLogin = (badgeNumber) => {
-    // Update state with the badge number
-    setOfficerBadgeNumber(badgeNumber);
-    // You can perform other actions here after successful login
-  };
-
-  useEffect(() => {
-    const initialize = async () => {
-      const contractAddress = '0x8E8d8135fcDFE2608F28461cca35eFbB856FbdaD';
-      const contractABI = abi.abi;
-
-      try {
-        const { ethereum } = window;
-
+      if (ethereum) {
         const accounts = await ethereum.request({
           method: 'eth_requestAccounts'
         });
@@ -58,13 +47,53 @@ function App() {
         const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
         setState({ provider, signer, contract });
-      } catch (error) {
-        alert(error);
+      } else {
+        alert('MetaMask extension not detected. Please install MetaMask to connect.');
       }
-    };
+    } catch (error) {
+      alert(error);
+    }
+  };
 
-    initialize();
-  }, []);
+  const [userType, setUserType] = useState(null);
+  const [officerBadgeNumber, setOfficerBadgeNumber] = useState(null);
+
+
+  const handleOfficerLogin = (badgeNumber) => {
+    // Update state with the badge number
+    setOfficerBadgeNumber(badgeNumber);
+    // You can perform other actions here after successful login
+  };
+
+  // useEffect(() => {
+  //   const initialize = async () => {
+  //     const contractAddress = '0x8E8d8135fcDFE2608F28461cca35eFbB856FbdaD';
+  //     const contractABI = abi.abi;
+
+  //     try {
+  //       const { ethereum } = window;
+
+  //       const accounts = await ethereum.request({
+  //         method: 'eth_requestAccounts'
+  //       });
+
+  //       window.ethereum.on('accountsChanged', () => {
+  //         window.location.reload();
+  //       });
+
+  //       const provider = new ethers.providers.Web3Provider(ethereum);
+  //       const signer = provider.getSigner();
+
+  //       const contract = new ethers.Contract(contractAddress, contractABI, signer);
+
+  //       setState({ provider, signer, contract });
+  //     } catch (error) {
+  //       alert(error);
+  //     }
+  //   };
+
+  //   initialize();
+  // }, []);
 
   const redirectToRegister = () => {
     window.location.href = '/register';
@@ -227,6 +256,11 @@ function App() {
                     <ul className="flex space-x-4">
                       <li className="hover:underline cursor-pointer" >HOME</li>
                       <li className="hover:underline cursor-pointer" onClick={handleAbout}>ABOUT</li>
+                      <li>
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleMetaMaskConnect}>
+                          Connect with MetaMask
+                        </button>
+                      </li>
                     </ul>
                   </nav>
                 </header>
