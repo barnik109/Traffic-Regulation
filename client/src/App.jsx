@@ -59,11 +59,18 @@ function App() {
 
   const [userType, setUserType] = useState(null);
   const [officerBadgeNumber, setOfficerBadgeNumber] = useState(null);
+  const [username,setUsername] = useState(null);
 
 
   const handleOfficerLogin = (badgeNumber) => {
     // Update state with the badge number
     setOfficerBadgeNumber(badgeNumber);
+    // You can perform other actions here after successful login
+  };
+
+  const handleUserLogin = (username) => {
+    // Update state with the username
+    setUsername(username);
     // You can perform other actions here after successful login
   };
 
@@ -379,10 +386,10 @@ function App() {
           <Route path='/UserReg' element={<UserRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />} />
           <Route path='/OfficerReg' element={<OfficerRegistration handleRegistrationSuccess={() => handleUserTypeSelection(null)} />} />
 
-          <Route path='/UserLogin' element={<UserLogin handleUserLogin={() => handleUserTypeSelection(null)} />} />
+          <Route path='/UserLogin' element={<UserLogin handleUserLogin={handleUserLogin} />} />
           <Route path='/OfficerLogin' element={<OfficerLogin handleOfficerLogin={handleOfficerLogin} />} />
 
-          <Route path='/userDashboard' element={<PublicCheck contract={state.contract} />} />
+          <Route path='/userDashboard' element={<PublicCheck contract={state.contract} username={username} />} />
           <Route path='/officerDashboard' element={<TrafficOfficer contract={state.contract} officerBadgeNumber={officerBadgeNumber} />} />
 
           <Route path='/about' element={<AboutUs />} />

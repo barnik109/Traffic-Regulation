@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const UserLogin = ({ handleUserLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error,setError] = useState('');
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,8 +23,9 @@ const UserLogin = ({ handleUserLogin }) => {
             if (response.data.success) {
                 // Call the handleUserLogin function to handle successful login
                 // handleUserLogin();
-                alert("login successful")
-                window.location.href = "/userDashboard";
+                alert("Login successful")
+                navigate('/userDashboard');
+                handleUserLogin(username);
             } else {
                 // Handle authentication failure
                 setError('Invalid username or password');
