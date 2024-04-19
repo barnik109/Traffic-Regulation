@@ -1,4 +1,5 @@
 import React from 'react';
+import indianers from '../assets/india-ners.png';
 
 function Emergency() {
     // Functionality for emergency assistance can be added here
@@ -31,7 +32,7 @@ function Emergency() {
                         </div>
 
                         <div className='w-1/2 flex justify-center'>
-                            <img className='w-[300px]' src="../src/assets/india-ners.png" alt="" />
+                            <img className='w-[300px]' src={indianers} alt="" />
                         </div>
                     </div>
 

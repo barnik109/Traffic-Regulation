@@ -24,8 +24,8 @@ const OfficerRegistration = ({ handleRegistrationSuccess }) => {
         try {
             const response = await axios.post('http://localhost:3001/register/officer', formData);
             if (response.data.success) {
-                handleRegistrationSuccess();
-                alert("registration successful")
+                // handleRegistrationSuccess();
+                alert("Registration successful")
             } else {
                 setError(response.data.message);
             }

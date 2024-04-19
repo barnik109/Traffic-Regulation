@@ -36,7 +36,8 @@ const UserRegistration = ({ handleRegistrationSuccess }) => {
         try {
             const response = await axios.post('http://localhost:3001/register/user', formData);
             if (response.data.success) {
-                handleRegistrationSuccess();
+                // handleRegistrationSuccess();
+                alert("Registration successful")
             } else {
                 setError(response.data.message);
             }
