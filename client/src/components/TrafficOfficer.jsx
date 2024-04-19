@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 import police from '../assets/police.gif'
 
-const TrafficOfficer = ({ contract, officerBadgeNumber }) => {
+const TrafficOfficer = ({ contract,signer, officerBadgeNumber }) => {
 
   const navigate = useNavigate();
 
@@ -64,6 +64,7 @@ const TrafficOfficer = ({ contract, officerBadgeNumber }) => {
       const offenceType = convertViolationTypeToCode(violationType);
       const tx = await contract.processViolation(offenceType);
       await tx.wait();
+
 
       const response = await fetch('http://localhost:3001/submit-violation', {
         method: 'POST',

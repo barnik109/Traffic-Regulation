@@ -28,34 +28,69 @@ function App() {
     contract: null
   });
 
-  const handleMetaMaskConnect = async () => {
-    const contractAddress = '0x8E8d8135fcDFE2608F28461cca35eFbB856FbdaD';
-    const contractABI = abi.abi;
-    try {
-      const { ethereum } = window;
+  // const [isMetaMaskConnected, setIsMetaMaskConnected] = useState(false);
 
-      if (ethereum) {
-        const accounts = await ethereum.request({
-          method: 'eth_requestAccounts'
-        });
+  // const handleMetaMaskConnect = async () => {
+  //   const contractAddress = '0x8E8d8135fcDFE2608F28461cca35eFbB856FbdaD';
+  //   const contractABI = abi.abi;
+  //   try {
+  //     const { ethereum } = window;
 
-        window.ethereum.on('accountsChanged', () => {
-          window.location.reload();
-        });
+  //     if (ethereum) {
+  //       const accounts = await ethereum.request({
+  //         method: 'eth_requestAccounts'
+  //       });
 
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
+  //       window.ethereum.on('accountsChanged', () => {
+  //         window.location.reload();
+  //       });
 
-        const contract = new ethers.Contract(contractAddress, contractABI, signer);
+  //       const provider = new ethers.providers.Web3Provider(ethereum);
+  //       const signer = provider.getSigner();
 
-        setState({ provider, signer, contract });
-      } else {
-        alert('MetaMask extension not detected. Please install MetaMask to connect.');
-      }
-    } catch (error) {
-      alert(error);
-    }
-  };
+  //       const contract = new ethers.Contract(contractAddress, contractABI, signer);
+
+  //       setState({ provider, signer, contract });
+  //       setIsMetaMaskConnected(true);
+  //     } else {
+  //       alert('MetaMask extension not detected. Please install MetaMask to connect.');
+  //     }
+  //   } catch (error) {
+  //     alert(error);
+  //   }
+  // };
+
+  useEffect(() => {
+      // Initialize contract, signer, and provider here
+      // You can use state.provider, state.signer, and state.contract
+      const initialize = async () => {
+          const contractAddress = '0x8E8d8135fcDFE2608F28461cca35eFbB856FbdaD';
+          const contractABI = abi.abi;
+
+          try {
+            const { ethereum } = window;
+
+            const accounts = await ethereum.request({
+              method: 'eth_requestAccounts'
+            });
+
+            window.ethereum.on('accountsChanged', () => {
+              window.location.reload();
+            });
+
+            const provider = new ethers.providers.Web3Provider(ethereum);
+            const signer = provider.getSigner();
+
+            const contract = new ethers.Contract(contractAddress, contractABI, signer);
+
+            setState({ provider, signer, contract });
+          } catch (error) {
+            alert(error);
+          }
+        };
+
+        initialize();
+    }, []);
 
   const [userType, setUserType] = useState(null);
   const [officerBadgeNumber, setOfficerBadgeNumber] = useState(null);
@@ -266,7 +301,7 @@ function App() {
                       <li className="hover:underline cursor-pointer" >HOME</li>
                       <li className="hover:underline cursor-pointer" onClick={handleAbout}>ABOUT</li>
                       <li>
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleMetaMaskConnect}>
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                           Connect with MetaMask
                         </button>
                       </li>
