@@ -387,8 +387,8 @@ function App() {
                     <h4 className='text-9xl font-bold'>Register yourself to use this Service.</h4>
                   </div>
                   <div className='flex gap-20 ml-10'>
-                    <button className='bg-zinc-800 text-white py-2 px-4 rounded-full shadow-lg  text-xl font-semibold' onClick={registerOfficer}>Register as Officer</button>
-                    <button className='bg-zinc-800 text-white py-2 px-4 rounded-full shadow-lg  text-xl font-semibold' onClick={registerUser}>Register as User</button>
+                    <motion.button whileHover={{ scale: 1.2 }} className='bg-zinc-800 text-white py-2 px-4 rounded-full shadow-lg  text-xl font-semibold' onClick={registerOfficer}>Register as Officer</motion.button>
+                    <motion.button whileHover={{ scale: 1.2 }} className='bg-zinc-800 text-white py-2 px-4 rounded-full shadow-lg  text-xl font-semibold' onClick={registerUser}>Register as User</motion.button>
                   </div>
                 </div>
                 <div className="w-1/2 flex justify-center items-center">
@@ -408,8 +408,8 @@ function App() {
                   <h4 className='text-9xl font-bold'>Please login to proceed.</h4>
                 </div>
                 <div className='flex gap-20 ml-10'>
-                  <button className='bg-black text-white py-2 px-4 rounded-full shadow-lg text-xl font-semibold' onClick={loginOfficer}>Login as Officer</button>
-                  <button className='bg-black text-white py-2 px-4 rounded-full shadow-lg text-xl font-semibold' onClick={loginUser}>Login as User</button>
+                  <motion.button whileHover={{ scale: 1.2 }} className='bg-black text-white py-2 px-4 rounded-full shadow-lg text-xl font-semibold' onClick={loginOfficer}>Login as Officer</motion.button>
+                  <motion.button whileHover={{ scale: 1.2 }} className='bg-black text-white py-2 px-4 rounded-full shadow-lg text-xl font-semibold' onClick={loginUser}>Login as User</motion.button>
                 </div>
               </div>
               <div className="w-1/2 flex justify-center items-center">
